@@ -5,6 +5,7 @@ namespace webapi.DAL.Database.DatabaseContext
 {
     public class EkwatisoDbContext : DbContext
     {
+        public EkwatisoDbContext(DbContextOptions<EkwatisoDbContext> options) : base(options){}
         public DbSet<TbUser> TbUsers { get; set; }
         public DbSet<TbDoacao> TbDoacoes { get; set; }
         public DbSet<TbCampanha> TbCampanhas { get; set; }

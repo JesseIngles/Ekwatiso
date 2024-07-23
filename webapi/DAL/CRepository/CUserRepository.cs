@@ -18,7 +18,7 @@ namespace webapi.DAL.CRepository
             _dbContext = dbContext;
         }
 
-        public async Task<Dto_Resposta> AtualizarContaUsuario(int v, Dto_UpdateUsuario usuario)
+        public async Task<Dto_Resposta> AtualizarContaUsuario(int v, Dto_Usuario usuario)
         {
             Dto_Resposta resposta = new Dto_Resposta();
             if(usuario == null)

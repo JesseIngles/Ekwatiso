@@ -8,7 +8,7 @@ namespace webapi.Controllers
 {
     [Authorize]
     [Controller]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class ProvinciaController : Controller
     {
         private readonly IProvinciaRepository _provinciaRepository;

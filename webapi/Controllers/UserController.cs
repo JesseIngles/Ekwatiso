@@ -8,7 +8,7 @@ namespace webapi.Controllers
 {
     [Authorize]
     [Controller]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -27,7 +27,7 @@ namespace webapi.Controllers
 
         [AllowAnonymous]
         [HttpPut("AtualizarConta")]
-        public async Task<ActionContext> AtualizarContaUsuario([FromBody] Dto_UpdateUsuario usuario)
+        public async Task<ActionResult> AtualizarContaUsuario([FromBody] Dto_Usuario usuario)
         {
             Dto_Resposta resposta = new Dto_Resposta();
             resposta = await _userRepository.AtualizarContaUsuario(1, usuario);

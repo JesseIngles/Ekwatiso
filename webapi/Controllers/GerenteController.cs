@@ -5,7 +5,7 @@ namespace webapi.Controllers
 {
     [Authorize]
     [Controller]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class GerenteController : Controller
     {
         public GerenteController()

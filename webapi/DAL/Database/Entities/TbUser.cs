@@ -10,6 +10,6 @@ namespace webapi.DAL.Database.Entities
         public string Senha { get; set; }
         public virtual TbProvincia Provincia { get; set; }
         public virtual ICollection<TbDoacao> Doacoes { get; set; }
-        public virtual ICollection<TbCampanha> Campanhas { get; set; }
+        public virtual ICollection<TbCampanha> Campanhas { get; set; }r
     }
 }

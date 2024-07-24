@@ -1,11 +1,47 @@
-﻿.navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+﻿body {
+    background-color: transparent;
+}
 
+#nva {
+    background-color: transparent;
+}
+.container {
+    background-color: transparent;
+}
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    align-items: flex-start;
+    align-content: center;
+    justify-items: center;
+    background-color: transparent;
     
 }
-
-.navbar img {
-    height: 100px;
+.navbar h1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+   
 }
+
+.sections {
+    display:  flex;
+    gap: 10px;
+    margin-left: -200px;
+    background-color: transparent;
+}
+
+.navbar div a {
+    color: black;
+    text-decoration: none;
+}
+
+.sections a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+
+

@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<EkwatisoDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IUserRepository, CUserRepository>();
+builder.Services.AddScoped<IAutenticacaoRepository, CAutenticacaoRepository>();
 builder.Services.AddScoped<ICategoriaRepository, CCategoriaRepository>();
 builder.Services.AddScoped<ICampanhaRepository, CCampanhaRepository>();
 builder.Services.AddScoped<IPaisRepository, CPaisRepository>();

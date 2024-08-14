@@ -31,7 +31,7 @@ builder.Services.AddAuthentication(
        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     }
 ).AddJwtBearer(options =>{
-    
+
 });
 var app = builder.Build();
 
@@ -48,6 +48,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 

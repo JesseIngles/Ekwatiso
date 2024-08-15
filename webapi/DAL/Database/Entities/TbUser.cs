@@ -2,7 +2,7 @@ namespace webapi.DAL.Database.Entities
 {
     public class TbUser
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string NumeroIdentificacao { get; set; }
         public string NomeCompleto { get; set; }
         public string Email { get; set; }

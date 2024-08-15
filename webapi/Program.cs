@@ -4,11 +4,12 @@ using Microsoft.OpenApi.Models;
 using webapi.DAL.CRepository;
 using webapi.DAL.Database.DatabaseContext;
 using webapi.DAL.IRepository;
+using webapi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<EkwatisoDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<EkwatisoDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IUserRepository, CUserRepository>();
 builder.Services.AddScoped<IAutenticacaoRepository, CAutenticacaoRepository>();
 builder.Services.AddScoped<ICategoriaRepository, CCategoriaRepository>();
@@ -17,6 +18,7 @@ builder.Services.AddScoped<IPaisRepository, CPaisRepository>();
 builder.Services.AddScoped<IProvinciaRepository, CProvinciaRepository>();
 builder.Services.AddScoped<IDoacaoRepository, CDoacaoRepository>();
 builder.Services.AddScoped<IGerenteRepository, CGerenteRepository>();
+builder.Services.AddScoped<AuthService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[8.0.7, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQl": {
               "target": "Package",
               "version": "[8.0.4, )"

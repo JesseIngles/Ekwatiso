@@ -2,7 +2,7 @@
 {
     public class TbGerente
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Telefone { get; set; }
         public string NomeCompleto { get; set; }
         public bool Admin { get; set; }

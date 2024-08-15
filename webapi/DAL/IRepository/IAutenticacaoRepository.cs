@@ -7,5 +7,7 @@ namespace webapi.DAL.IRepository
     public interface IAutenticacaoRepository
     {
       Task<Dto_Resposta> FazerLogin(Dto_LoginCredentials credencias);
+        Task<Dto_Resposta> RecuperarSenha(string telefone);
+        Task<Dto_Resposta> TerminarSessão(string authToken);
     }
 }

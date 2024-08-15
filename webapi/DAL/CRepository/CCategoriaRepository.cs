@@ -65,7 +65,7 @@ namespace webapi.DAL.CRepository
                 {
                     TbCategoria novaCategoria = new TbCategoria
                     {
-                        Nome = categoria.Nome,
+                        Nome = categoria.Nome
                     };
 
                     await _dbContext.TbCategorias.AddAsync(novaCategoria);

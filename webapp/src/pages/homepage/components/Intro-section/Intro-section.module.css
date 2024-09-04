@@ -1,0 +1,89 @@
+.firstsection {
+  background-image: image-set('/images/inicio.svg');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  height: 70rem;
+  padding-top: 35px;
+}
+
+.centralcomponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*max-width: 800px;  */
+  padding: 300px;
+}
+
+.centralcomponent h1 {
+  font-size: 60px;
+  width: 740px;
+  line-height: 72px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.centralcomponent h5 {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.centralcomponent strong {
+  color: #13ADB7;
+}
+
+.buttonSections {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; }
+
+.buttonSections div {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+#firstbutton {
+  background-color: #13ADB7;
+  color: white;
+  border: none;
+  
+}
+
+#secondbutton {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+#firstbutton h3, #secondbutton h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .firstsection {
+    height: auto;
+    padding: 20px;
+  }
+
+  .centralcomponent h1 {
+    font-size: 2rem;
+  }
+
+  .centralcomponent h5 {
+    font-size: 1rem;
+  }
+
+  .buttonSections {
+    flex-direction: column; 
+  }
+
+  .buttonSections div {
+    width: 100%; 
+    text-align: center;
+  }
+}

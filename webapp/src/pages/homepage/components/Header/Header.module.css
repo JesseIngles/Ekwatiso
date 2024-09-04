@@ -1,0 +1,33 @@
+/*  Navbar */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: transparent;
+}
+
+.navbar #leftComponents {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#leftComponents img {
+  margin-right: 40px;
+}
+#ancoras a {
+  margin-left: 10px;
+  margin-right: 10px;
+  
+}
+
+#ancoras a:hover {
+  text-decoration: underline;
+  animation: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+
+.navbar #rightComponents {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

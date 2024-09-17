@@ -6,6 +6,8 @@ using webapi.DTO.Outbound;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using webapi.Services;
 
 namespace webapi.DAL.CRepository
 {
@@ -36,7 +38,7 @@ namespace webapi.DAL.CRepository
                     usuarioExistente.NomeCompleto = usuario.NomeCompleto;
                     usuario.Email = usuario.Email;
                     usuario.NumeroIdentificacao = usuario.NumeroIdentificacao;
-                    usuarioExistente.Senha = usuario.Senha;
+                    usuarioExistente.Senha = PasswordService.HashPassword(usuario.Senha);
 
                     //Atualizar o banco de dados
                     _dbContext.TbUsers.Update(usuarioExistente);
@@ -80,7 +82,8 @@ namespace webapi.DAL.CRepository
                         NomeCompleto = usuario.NomeCompleto,
                         NumeroIdentificacao = usuario.NumeroIdentificacao,
                         Telefone = usuario.Telefone,
-                        Senha = usuario.Senha
+                        Senha = PasswordService.HashPassword(usuario.Senha),
+                        Provincia = await _dbContext.TbProvincias.FirstOrDefaultAsync(x => x.Id == usuario.ProvinciaId)
                     };
 
                     await _dbContext.TbUsers.AddAsync(tbUser);
@@ -102,6 +105,62 @@ namespace webapi.DAL.CRepository
                 
             }
 
+            return resposta;
+        }
+
+        public async Task<Dto_Resposta> VerMinhaConta(int usuarioId)
+        {
+            Dto_Resposta resposta = new Dto_Resposta();
+            try
+            {
+                TbUser? usuarioExistente = await _dbContext.TbUsers.FirstOrDefaultAsync(x => x.Id == usuarioId);
+                if(usuarioExistente!=null)
+                {
+                    resposta.resposta = new {
+                        usuarioExistente.Email,
+                        usuarioExistente.NomeCompleto,
+                        usuarioExistente.NumeroIdentificacao,
+                    };
+                    resposta.mensagem = "Sucesso: Dados consultados com sucesso";
+                    resposta.sucess = true;
+                }else {
+                    resposta.mensagem = "Falha: Dados não encontrados";
+                    resposta.sucess = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                resposta.mensagem = $"Falha: Ocorreu um erro ao consultar a conta do usuário. Detalhes: {ex.Message}";
+                resposta.sucess = false;
+            }
+            return resposta;
+        }
+
+        public async Task<Dto_Resposta> VerUsuarioPorId(int id)
+        {
+            Dto_Resposta resposta = new Dto_Resposta();
+            try
+            {
+                TbUser? usuarioExistente = await _dbContext.TbUsers.FirstOrDefaultAsync(x => x.Id == id);
+                if(usuarioExistente!=null)
+                {
+                    resposta.resposta = new {
+                        usuarioExistente.Email,
+                        usuarioExistente.NomeCompleto,
+                        usuarioExistente.NumeroIdentificacao,
+                    };
+                    resposta.mensagem = "Sucesso: Dados consultados com sucesso";
+                    resposta.sucess = true;
+                }else {
+                    resposta.mensagem = "Falha: Dados não encontrados";
+                    resposta.sucess = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                resposta.mensagem = $"Falha: Ocorreu um erro ao consultar a conta do usuário. Detalhes: {ex.Message}";
+                resposta.sucess = false;
+            }
             return resposta;
         }
     }

@@ -28,7 +28,7 @@ namespace webapi.Controllers
 
         [AllowAnonymous]
         [HttpPost("CriarCampanha")]
-        public async Task<ActionResult> CriarCampanha(Dto_Campanha campanha)
+        public async Task<ActionResult> CriarCampanha([FromBody] Dto_Campanha campanha)
         {
             Dto_Resposta resposta = new Dto_Resposta();
             resposta = await _campanhaRepository.CriarCampanha(campanha);
@@ -37,7 +37,7 @@ namespace webapi.Controllers
 
         [AllowAnonymous]
         [HttpPost("AtualizarCampanha")]
-        public async Task<ActionResult> AtualizarCampanha(long id, Dto_Campanha campanha)
+        public async Task<ActionResult> AtualizarCampanha(long id, [FromBody] Dto_Campanha campanha)
         {
             Dto_Resposta resposta = new Dto_Resposta();
             resposta = await _campanhaRepository.AtualizarCampanha(id, campanha);

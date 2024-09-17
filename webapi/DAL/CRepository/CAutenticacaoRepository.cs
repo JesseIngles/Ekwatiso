@@ -28,8 +28,8 @@ namespace webapi.DAL.CRepository
 
       try
       {
-        TbUser? usuarioExistente = await _dbContext.TbUsers.FirstAsync(x => x.NomeCompleto == credencias.Username && x.Senha == credencias.Password);
-        TbGerente? gerenteExistente = await _dbContext.TbGerentes.FirstAsync(x => x.NomeCompleto == credencias.Username && x.Senha == credencias.Password);
+        TbUser? usuarioExistente = await _dbContext.TbUsers.FirstAsync(x => x.NomeCompleto == credencias!.Username && PasswordService.VerifyPassword(credencias.Password, x.Senha));
+        TbGerente? gerenteExistente = await _dbContext.TbGerentes.FirstAsync(x => x.NomeCompleto == credencias!.Username && PasswordService.VerifyPassword(credencias.Password, x.Senha));
         if(usuarioExistente == null && gerenteExistente != null)
         {
           resposta.resposta = await AuthService.GenerateGerenteToken(gerenteExistente);

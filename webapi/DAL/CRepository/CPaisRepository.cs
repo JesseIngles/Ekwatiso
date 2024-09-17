@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using webapi.DAL.Database.DatabaseContext;
 using webapi.DAL.Database.Entities;
 using webapi.DAL.IRepository;
@@ -10,9 +11,12 @@ namespace webapi.DAL.CRepository
     public class CPaisRepository : IPaisRepository
     {
         private readonly EkwatisoDbContext _dbContext;
-        public CPaisRepository(EkwatisoDbContext dbContext)
+        private readonly IMemoryCache _memoryCache; 
+        private const string Paises_Key = "Paises";
+        public CPaisRepository(EkwatisoDbContext dbContext, IMemoryCache memoryCache )
         {
             _dbContext = dbContext;
+            _memoryCache = memoryCache;
         }
 
         public async Task<Dto_Resposta> ApagarPais(int id)
@@ -123,15 +127,26 @@ namespace webapi.DAL.CRepository
             Dto_Resposta resposta = new Dto_Resposta();
             try
             {
+                if(_memoryCache.TryGetValue(Paises_Key, out ICollection<TbPais> paises))
+                {
+                    resposta.resposta = paises!.Select(p => p.Nome);
+                    resposta.mensagem = "Sucesso: Consultado todos o paises com sucesso";
+                    resposta.sucess = true;
+                    return resposta;
+                }
                 ICollection<TbPais> paisesExistentes = await _dbContext.TbPaises.ToListAsync();
-                resposta.resposta = paisesExistentes.Select(p => p.Nome);
+                if(paisesExistentes!=null)
+                {
+                    _memoryCache.Set(Paises_Key, paisesExistentes, TimeSpan.FromHours(1));
+                }
+                resposta.resposta = paisesExistentes!.Select(p => p.Nome);
                 resposta.mensagem = "Sucesso: Consultado todos o paises com sucesso";
                 resposta.sucess = true;
             }catch(Exception ex)
             {
                 resposta.mensagem = $"Falha: Houve um erro durante a consulta de todos os paises. Detalhes:{ex.Message}";
                 resposta.sucess = false;
-            }
+            }   
             return resposta;
         }
     }

@@ -15,7 +15,7 @@ namespace webapi.Controllers
         {
             _doacaoRepository = doacaoRepository;
         }
-
+        [Authorize()]
         [HttpPost("FazerDoação")]
         public async Task<ActionResult> FazerDoacao()
         {

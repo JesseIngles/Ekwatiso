@@ -19,7 +19,7 @@ namespace webapi.Controllers
 
         [AllowAnonymous]
         [HttpPost("CadastrarProvincia")]
-        public async Task<ActionResult> CadastrarPais(Dto_Provincia provincia)
+        public async Task<ActionResult> CadastrarPais([FromBody]Dto_Provincia provincia)
         {
             Dto_Resposta resposta = new Dto_Resposta();
             resposta = await _provinciaRepository.CadastrarProvincia(provincia);

@@ -53,7 +53,7 @@ namespace webapi.DAL.CRepository
         {
             Dto_Resposta resposta = new Dto_Resposta();
             if(categoria == null)
-            {
+            {   
                 resposta.mensagem = "Falha: Objecto categoria vazio";
                 resposta.sucess = false;
             }
@@ -80,7 +80,7 @@ namespace webapi.DAL.CRepository
                 }
             }catch(Exception ex)
             {
-                resposta.mensagem = $"Falha: Houve um erro ao realizar esta operação. Detalhes {ex.Message}";
+                resposta.mensagem = $"Falha: Houve um erro ao realizar esta operação. Detalhes: {ex.Message}";
                 resposta.sucess = false;
             }
             return resposta;

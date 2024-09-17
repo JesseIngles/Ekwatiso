@@ -20,6 +20,7 @@ builder.Services.AddScoped<IDoacaoRepository, CDoacaoRepository>();
 builder.Services.AddScoped<IGerenteRepository, CGerenteRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddControllers();
+builder.Services.AddMemoryCache();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen( options => {

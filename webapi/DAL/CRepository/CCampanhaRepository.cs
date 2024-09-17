@@ -4,6 +4,7 @@ using webapi.DAL.Database.Entities;
 using webapi.DAL.IRepository;
 using webapi.DTO.Inbound;
 using webapi.DTO.Outbound;
+using webapi.Services;
 
 namespace webapi.DAL.CRepository
 {
@@ -96,16 +97,18 @@ namespace webapi.DAL.CRepository
                 bool campanhaExistente = await _dbContext.TbCampanhas.AnyAsync(c => c.Titulo == campanha.Titulo);  
                 if(!campanhaExistente && usuarioExistente != null)
                 {
+                    int ultimoId = _dbContext.TbCampanhas.OrderByDescending(x => x.Id).FirstOrDefault().Id;
                     TbCampanha novaCampanha = new TbCampanha
                     {
                         Autor = usuarioExistente,
                         Categoria = await _dbContext.TbCategorias.FirstAsync(c => c.Id == campanha.CategoriaId),
-                        Data = DateTime.Now,
+                        Data = campanha.Data,
                         meta = campanha.meta,
                         Titulo = campanha.Titulo,
-                        Fotografias = campanha.Fotografias,
+                        Fotografias = campanha.Fotografias.Select(imagem => ImageService.UploaImageCampanhas(ultimoId + 1, imagem).Result).ToList(),
                         Provincia = await _dbContext.TbProvincias.FirstAsync(p => p.Id == campanha.ProvinciaId)
                     };
+
 
                     await _dbContext.TbCampanhas.AddAsync(novaCampanha);
                     await _dbContext.SaveChangesAsync();

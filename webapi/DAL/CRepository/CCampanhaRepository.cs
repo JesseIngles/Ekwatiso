@@ -93,7 +93,7 @@ namespace webapi.DAL.CRepository
 
             try 
             {
-                TbUser usuarioExistente = await _dbContext.TbUsers.FirstOrDefaultAsync(u => u.Id == campanha.AutorId);
+                TbUser? usuarioExistente = await _dbContext.TbUsers.FirstOrDefaultAsync(u => u.Id == campanha.AutorId);
                 bool campanhaExistente = await _dbContext.TbCampanhas.AnyAsync(c => c.Titulo == campanha.Titulo);  
                 if(!campanhaExistente && usuarioExistente != null)
                 {

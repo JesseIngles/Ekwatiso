@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e2vE7JgvWH9m4VXBCMi3azHD7VMmvlj895sxABpjGI4fRZpsnoQLvJnYoGNn1/aM+e5u3z9GZut7qS0+R48Czw==",
+  "dgSpecHash": "OUDYyK3lyLoj7ziP1yaYDioK0CqeTYqLY3LfojeyeHTHLh7Tu6mDGc+hFpd0J5eztgvmb3BYjqqKCW/A3pyM7A==",
   "success": true,
-  "projectFilePath": "/home/jesseingles/dev/Ekwatiso/webapi/webapi.csproj",
+  "projectFilePath": "/home/jesseingles/dev/Owning/Ekwatiso/webapi/webapi.csproj",
   "expectedPackageFiles": [
     "/home/jesseingles/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/home/jesseingles/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",

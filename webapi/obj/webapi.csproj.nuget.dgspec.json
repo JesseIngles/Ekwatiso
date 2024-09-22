@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/jesseingles/dev/Ekwatiso/webapi/webapi.csproj": {}
+    "/home/jesseingles/dev/Owning/Ekwatiso/webapi/webapi.csproj": {}
   },
   "projects": {
-    "/home/jesseingles/dev/Ekwatiso/webapi/webapi.csproj": {
+    "/home/jesseingles/dev/Owning/Ekwatiso/webapi/webapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jesseingles/dev/Ekwatiso/webapi/webapi.csproj",
+        "projectUniqueName": "/home/jesseingles/dev/Owning/Ekwatiso/webapi/webapi.csproj",
         "projectName": "webapi",
-        "projectPath": "/home/jesseingles/dev/Ekwatiso/webapi/webapi.csproj",
+        "projectPath": "/home/jesseingles/dev/Owning/Ekwatiso/webapi/webapi.csproj",
         "packagesPath": "/home/jesseingles/.nuget/packages/",
-        "outputPath": "/home/jesseingles/dev/Ekwatiso/webapi/obj/",
+        "outputPath": "/home/jesseingles/dev/Owning/Ekwatiso/webapi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/jesseingles/.nuget/NuGet/NuGet.Config"
